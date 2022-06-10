@@ -10,15 +10,23 @@
 Asobi is a web application where you can play popular board games with your
 friends and family! Available games include:
 
-- **Tic-Tac-Toe**
-- **Obstruction**
-- **Ludo**
-- **Battleship**
-- **Connect Four**
-- **Othello**
-
 <p align="center">
-  <img src="static/img/about/home.png">
+  <img src="static/img/about/tictactoe.png">
+</p>
+<p align="center">
+  <img src="static/img/about/obstruction.png">
+</p>
+<p align="center">
+  <img src="static/img/about/ludo.png">
+</p>
+<p align="center">
+  <img src="static/img/about/battleship.png">
+</p>
+<p align="center">
+  <img src="static/img/about/connect4.png">
+</p>
+<p align="center">
+  <img src="static/img/about/othello.png">
 </p>
 
 ## Tools used
