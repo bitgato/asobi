@@ -1,0 +1,41 @@
+{% load static %}
+<div class="rules w-100 mx-0 my-3 px-3">
+  <div class="page-heading mx-0 mb-3 w-100"><h1>Rules</h1></div>
+  <p><b><u>Players</u></b> Two</p>
+  <p><b><u>Description</u></b></p>
+  <p>The game is played on an <u>8 x 8</u> grid. The goal is to have more disks on the board than your opponent at
+    the end of the game.</p>
+  <img loading="lazy" class="rule-img ms-0 mb-3" src="{% static 'img/rules/othello/board.png' %}" />
+  <p><b><u>Gameplay</u></b></p>
+  <p>The game begins with four disks placed in a square in the middle of the grid, two facing <u>light</u>-side-up,
+    two dark-side-up, so that the same-colored disks are on a diagonal. The game creator plays as dark
+    and moves first.</p>
+  <p>Dark must place a piece (dark-side-up) on the board and so that there exists at least one straight
+    (horizontal, vertical, or diagonal) occupied line between the new piece and another dark piece, with one or
+    more contiguous <u>light</u> pieces between them. For move one, dark has four options shown by outlined
+    circles.</p>
+  <img loading="lazy" class="rule-img ms-0 mb-3" src="{% static 'img/rules/othello/step1.png' %}" />
+  <p>Play always alternates. After placing a dark disk, dark turns over (flips to dark, captures) the single disk
+    (or chain of light disks) on the line between the new piece and an anchoring dark piece. No player can look back
+    to the previous status of disks when playing moves. A valid move is one where at least one piece is reversed
+    (flipped over).</p>
+  <p>If dark decided to put a piece in the topmost location (all choices are strategically equivalent at this time),
+    one piece gets turned over, so that the board appears thus.</p>
+  <img loading="lazy" class="rule-img ms-0 mb-3" src="{% static 'img/rules/othello/step2.png' %}" />
+  <p>Now light plays. This player operates under the same rules, with the roles reversed: light lays down a light
+    piece, causing a dark piece to flip. Possibilities at this time appear thus (indicated by outlined circles).</p>
+  <img loading="lazy" class="rule-img ms-0 mb-3" src="{% static 'img/rules/othello/step3.png' %}" />
+  <p>Light takes the bottom left option and reverses one piece.</p>
+  <img loading="lazy" class="rule-img ms-0 mb-3" src="{% static 'img/rules/othello/step4.png' %}" />
+  <p>Players take alternate turns. If one player cannot make a valid move, play passes back to the other player. When
+    neither player can move, the game ends. This occurs when the grid has filled up or when neither player can legally
+    place a piece in any of the remaining squares. This means the game may end before the grid is completely filled.
+    This possibility may occur because one player has no pieces remaining on the board in that player's color.</p>
+  <p>One such case was Hassan - Verstuyft J. in European Grand Prix Ghent 2017. You can see the game transcript
+    <a href="https://thesaurus.altervista.org/reversi?tz=airyqU6pTShgK78C&fl=if">here</a>.</p>
+  <img loading="lazy" class="rule-img ms-0 mb-3" src="{% static 'img/rules/othello/result1.png' %}" />
+  <p>The game can end in a draw with both players having 32 pieces on the board.</p>
+  <p>One such case was Takanashi Yusuke - Takahashi Akihiro in World Othello Championship 2019. You can see the game
+    transcript <a href="https://thesaurus.altervista.org/reversi?tz=stlriUTdMaShqzoY7yV081gwp5uZ69WeQIRNfmnDLJEFKC2v3-GP_H4xXOAB&fl=if&gid=20191492">here</a>.</p>
+  <img loading="lazy" class="rule-img ms-0 mb-3" src="{% static 'img/rules/othello/result2.png' %}" />
+</div>

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %}Asobi - About{% endblock %}
+{% block page_heading %}About{% endblock %}
+{% block content %}
+<div class="rules about w-100 mx-0 my-3 px-3">
+  <div class="d-flex flex-column align-items-center mt-3">
+    <img id="about-logo" class="mb-3" src="{% static 'img/logos/asobi.png' %}" />
+    <p><b><u>Asobi</u></b> is a web application where you can play popular board games with your friends and family!</p>
+  </div>
+  <div class="page-heading mx-0 mt-0 mb-3 w-100"><h1>How to play</h1></div>
+  <p>Login to your account and select the game you want to play.</p>
+  <p>There will be an option to enter a game code.</p>
+  <img loading="lazy" id="gc-field-img" class="mb-3" src="{% static 'img/about/game_code.png' %}" />
+  <p>If you want to create a new game, click on <u>Join Game</u> without entering a <u>game code</u>.</p>
+  <p>If you want to join a game that has been created already, either enter the <u>16</u> character <u>game code</u>
+    or scan the QR code provided to the game creator.</p>
+  <div><img loading="lazy" class="mb-3" src="{% static 'img/about/game_qr.png' %}" /></div>
+  <p>The game creator gets the first turn in every game. In games with more than two players, the turn order is the
+    same as the order in which players joined the game. If you want to change the order of turns, just create a
+    new game.</p>
+  <p>The current turn is indicated in every game with highlighted username. The colors/symbols of each player is also
+    indicated at the same place.</p>
+  <div class="mb-3"><img loading="lazy" src="{% static 'img/about/turn.png' %}" /></div>
+  <p>After a game is over, <b><u>all</u></b> the participating players get an option to reset the board. The option is
+    always available even if you visit the game later.</p>
+  <p>Rules specific to games have been listed on their respective pages.</p>
+  <div class="mt-5">
+    <a href="https://github.com/bitgato/asobi">Source code</a>
+    <p>See the <a href="https://github.com/bitgato/asobi/LICENSE">LICENSE</a> file for copying information.</p>
+  </div>
+</div>
+{% endblock %}

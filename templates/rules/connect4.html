@@ -1,0 +1,24 @@
+{% load static %}
+<div class="rules w-100 mx-0 my-3 px-3">
+  <div class="page-heading mx-0 mb-3 w-100"><h1>Rules</h1></div>
+  <p><b><u>Players</u></b> Two</p>
+  <p><b><u>Description</u></b></p>
+  <p>Players take turns in dropping <u>stones</u> on a grid subject to gravity. The first player to get four
+    <u>stones</u> in a row wins.</p>
+  <p>The game is usually played on a <u>7 x 6</u> grid. However, other board sizes are avaliable, including
+    <u>5 x 4</u>, <u>6 x 5</u>, <u>8 x 7</u>, <u>9 x 7</u>, <u>10 x 7</u> and <u>8 x 8</u>.</p>
+  <img loading="lazy" class="rule-img no-shadow mb-3" src="{% static 'img/rules/connect4/board.png' %}" />
+  <p><b><u>Gameplay</u></b></p>
+  <p>The game creator has <span class="dark-red-color stone"><b>red</b></span> stones and the opponent has
+    <span class="dark-yellow-color stone"><b>yellow</b></span> stones.</p>
+  <p>Both players take turns dropping <u>stones</u> into columns of their choice by clicking the <b><u>Drop</u></b>
+    button on the top of the column. A stone cannot be dropped into a column which has been filled to the top.</p>
+  <p>The game continues until one of the players has connected four of his stones in a row (vertical, horizontal, or
+    diagonal).</p>
+  <p><b><u>Example</u></b></p>
+  <p>In the following game the <span class="dark-red-color stone"><b>red</b></span> player has won by making a diagonal
+    row of four.</p>
+  <div class="example-img-steps">
+    <img loading="lazy" class="rule-img mb-3" src="{% static 'img/rules/connect4/result.gif' %}" />
+  </div>
+</div>

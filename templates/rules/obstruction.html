@@ -1,0 +1,22 @@
+{% load static %}
+<div class="rules w-100 mx-0 my-3 px-3">
+  <div class="page-heading mx-0 mb-3 w-100"><h1>Rules</h1></div>
+  <p><b><u>Players</u></b> Two</p>
+  <p><b><u>Description</u></b></p>
+  <p>The game is played on a grid; <u>6 x 6</u> and <u>8 x 8</u> are good sizes. One player is <b>X</b> and the other
+    is <b>O</b>.</p>
+  <p>The players take turns in writing their symbol in an empty cell.
+    Placing a symbol blocks all of the neighbouring cells from both players.</p>
+  <p>The first player unable to move loses.</p>
+  <img loading="lazy" class="rule-img mb-3" src="{% static 'img/rules/obstruction/step1.png' %}" />
+  <p><b><u>Example</u></b></p>
+  <p>For example, in the following game the second player <b>O</b> wins because <b>X</b> has nowhere to play.</p>
+  <div class="example-img-steps">
+    <img loading="lazy" class="rule-img mb-3" src="{% static 'img/rules/obstruction/step1.png' %}" />
+    <img loading="lazy" class="rule-img mb-3" src="{% static 'img/rules/obstruction/step2.png' %}" />
+    <img loading="lazy" class="rule-img mb-3" src="{% static 'img/rules/obstruction/step3.png' %}" />
+    <img loading="lazy" class="rule-img mb-3" src="{% static 'img/rules/obstruction/step4.png' %}" />
+    <img loading="lazy" class="rule-img mb-3" src="{% static 'img/rules/obstruction/step5.png' %}" />
+    <img loading="lazy" class="rule-img mb-3" src="{% static 'img/rules/obstruction/step6.png' %}" />
+  </div>
+</div>

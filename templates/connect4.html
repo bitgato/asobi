@@ -1,0 +1,7 @@
+{% extends "game.html" %}
+{% load render_bundle from webpack_loader %}
+{% block head_title %}Asobi ({{request.user.username}}) - Connect Four{% endblock %}
+{% block page_heading %}Connect Four{% endblock %}
+{% block render %}
+{% render_bundle 'connect4' %}
+{% endblock %}

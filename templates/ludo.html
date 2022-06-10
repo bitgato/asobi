@@ -1,0 +1,189 @@
+{% extends "game.html" %}
+{% load render_bundle from webpack_loader %}
+{% block head_title %}Asobi ({{request.user.username}}) - Ludo{% endblock %}
+{% block page_heading %}Ludo{% endblock %}
+{% block players_info %}
+<div id="players-info" class="w-100">
+  <div id="player0-back" class="d-flex justify-content-center align-items-center w-100">
+    <div id="player0" class="d-flex align-items-center justify-content-center mb-1"></div>
+    <div class="ms-auto ludo-player-color rounded-circle dark-red"></div>
+  </div>
+  <div id="player1-back" class="d-flex justify-content-center align-items-center w-100">
+    <div id="player1" class="d-flex align-items-center justify-content-center mb-1"></div>
+    <div class="ms-auto ludo-player-color rounded-circle dark-green"></div>
+  </div>
+  <div id="player2-back" class="d-flex justify-content-center align-items-center w-100">
+    <div id="player2" class="d-flex align-items-center justify-content-center mb-1"></div>
+    <div class="ms-auto ludo-player-color rounded-circle dark-yellow"></div>
+  </div>
+  <div id="player3-back" class="d-flex justify-content-center align-items-center w-100">
+    <div id="player3" class="d-flex align-items-center justify-content-center mb-1"></div>
+    <div class="ms-auto ludo-player-color rounded-circle dark-blue"></div>
+  </div>
+</div>
+{% endblock %}
+{% block qr_code_div %}
+<div class="divider mt-2 mb-2"></div>
+<div id="dice" class="dice-1 mt-2 mb-2"></div>
+<button id="dice-roll" disabled="" class="w-100">Roll</button>
+<div class="mt-2 mb-2"></div>
+<div class="finished-tray">
+  <div id="finished-piece-0"></div>
+  <div id="finished-piece-1"></div>
+  <div id="finished-piece-2"></div>
+  <div id="finished-piece-3"></div>
+</div>
+<div class="finished-tray-head p-0 m-0">Pieces at home</div>
+{% endblock %}
+{% block render %}
+<div id="ludo-board">
+  {% render_bundle 'ludo' %}
+</div>
+<div class="d-flex w-100 flex-row justify-content-center">
+  <div class="house dark-red">
+    <div class="house-container">
+      <div id="RH-0" class="house-square dark-red top left"></div>
+      <div id="RH-1" class="house-square dark-red top right"></div>
+      <div id="RH-2" class="house-square dark-red bottom left"></div>
+      <div id="RH-3" class="house-square dark-red bottom right"></div>
+    </div>
+  </div>
+  <div class="d-flex flex-column ludo-cell-column top">
+    {% for i in "543210"|make_list %}
+    {% if i == '3' %}
+    <div id="cell-{{i|add:7}}" class="ludo-cell"><p>&starf;</p></div>
+    {% else %}
+    <div id="cell-{{i|add:7}}" class="ludo-cell"></div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  <div class="d-flex flex-column ludo-cell-column top">
+    <div id="cell-13" class="ludo-cell"><p>&darr;</p></div>
+    {% for i in "01234"|make_list %}
+    <div id="cell-{{i|add:59}}" class="ludo-cell dark-green"></div>
+    {% endfor %}
+  </div>
+  <div class="d-flex flex-column ludo-cell-column top">
+    {% for i in "012345"|make_list %}
+    {% if i == '1' %}
+    <div id="cell-{{i|add:14}}" class="ludo-cell dark-green"></div>
+    {% else %}
+    <div id="cell-{{i|add:14}}" class="ludo-cell"></div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  <div class="house dark-green">
+    <div class="house-container">
+      <div id="GH-0" class="house-square dark-green top left"></div>
+      <div id="GH-1" class="house-square dark-green top right"></div>
+      <div id="GH-2" class="house-square dark-green bottom left"></div>
+      <div id="GH-3" class="house-square dark-green bottom right"></div>
+    </div>
+  </div>
+</div>
+<div class="d-flex flex-row w-100 justify-content-center align-items-center">
+  <div class="d-flex flex-column ludo-cell-row-container align-items-center m-0 p-0">
+    <div class="d-flex flex-row ludo-cell-row left">
+      {% for i in "123456"|make_list %}
+      {% if i == '2' %}
+      <div id="cell-{{i}}" class="ludo-cell dark-red"></div>
+      {% else %}
+      <div id="cell-{{i}}" class="ludo-cell"></div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <div class="d-flex flex-row ludo-cell-row left">
+      <div id="cell-52" class="ludo-cell"><p>&rarr;</p></div>
+      {% for i in "01234"|make_list %}
+      <div id="cell-{{i|add:53}}" class="ludo-cell dark-red"></div>
+      {% endfor %}
+    </div>
+    <div class="d-flex flex-row ludo-cell-row left">
+      {% for i in "543210"|make_list %}
+      {% if i == '3' %}
+      <div id="cell-{{i|add:46}}" class="ludo-cell"><p>&starf;</p></div>
+      {% else %}
+      <div id="cell-{{i|add:46}}" class="ludo-cell"></div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="home-square">
+    <svg viewBox="0 0 100 100">
+      <polygon id="green-home" points="0,0 50,50, 100,0"/>
+      <polygon id="red-home" points="0,0 50,50, 0,100"/>
+      <polygon id="blue-home" points="0,100 50,50, 100,100"/>
+      <polygon id="yellow-home" points="100,0 50,50, 100,100"/>
+    </svg>
+  </div>
+  <div class="d-flex flex-column ludo-cell-row-container align-items-center m-0 p-0">
+    <div class="d-flex flex-row ludo-cell-row right">
+      {% for i in "012345"|make_list %}
+      {% if i == '3' %}
+      <div id="cell-{{i|add:20}}" class="ludo-cell"><p>&starf;</p></div>
+      {% else %}
+      <div id="cell-{{i|add:20}}" class="ludo-cell"></div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <div class="d-flex flex-row ludo-cell-row right">
+      {% for i in "43210"|make_list %}
+      <div id="cell-{{i|add:65}}" class="ludo-cell dark-yellow"></div>
+      {% endfor %}
+      <div id="cell-26" class="ludo-cell"><p>&larr;</p></div>
+    </div>
+    <div class="d-flex flex-row ludo-cell-row right">
+      {% for i in "543210"|make_list %}
+      {% if i == '1'%}
+      <div id="cell-{{i|add:27}}" class="ludo-cell dark-yellow"></div>
+      {% else %}
+      <div id="cell-{{i|add:27}}" class="ludo-cell"></div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="d-flex w-100 flex-row justify-content-center mb-3">
+  <div class="house dark-blue">
+    <div class="house-container">
+      <div id="BH-0" class="house-square dark-blue top left"></div>
+      <div id="BH-1" class="house-square dark-blue top right"></div>
+      <div id="BH-2" class="house-square dark-blue bottom left"></div>
+      <div id="BH-3" class="house-square dark-blue bottom right"></div>
+    </div>
+  </div>
+  <div class="d-flex flex-column ludo-cell-column bottom">
+    {% for i in "543210"|make_list %}
+    {% if i == '1' %}
+    <div id="cell-{{i|add:40}}" class="ludo-cell dark-blue"></div>
+    {% else %}
+    <div id="cell-{{i|add:40}}" class="ludo-cell"></div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  <div class="d-flex flex-column ludo-cell-column bottom">
+    {% for i in "43210"|make_list %}
+    <div id="cell-{{i|add:71}}" class="ludo-cell dark-blue">
+    </div>
+    {% endfor %}
+    <div id="cell-39" class="ludo-cell"><p>&uarr;</p></div>
+  </div>
+  <div class="d-flex flex-column ludo-cell-column bottom">
+    {% for i in "012345"|make_list %}
+    {% if i == '3' %}
+    <div id="cell-{{i|add:33}}" class="ludo-cell"><p>&starf;</p></div>
+    {% else %}
+    <div id="cell-{{i|add:33}}" class="ludo-cell"></div>
+    {% endif %}
+    {% endfor %}
+  </div>
+  <div class="house dark-yellow">
+    <div class="house-container">
+      <div id="YH-0" class="house-square dark-yellow top left"></div>
+      <div id="YH-1" class="house-square dark-yellow top right"></div>
+      <div id="YH-2" class="house-square dark-yellow bottom left"></div>
+      <div id="YH-3" class="house-square dark-yellow bottom right"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}

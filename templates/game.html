@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% load qr_code %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% if gc %}
+<div class="row w-100 d-flex justify-content-center">
+  <div class="d-flex flex-column col-sm-auto mx-0 d-flex align-items-center">
+    <div class="qr-code-div">
+      {% qr_from_text request.build_absolute_uri size=10 %}
+      <p class="game-code-p ms-2 me-2 mb-0"><u>gc</u>: <code>{{ gc }}</code></p>
+      <div class="divider mt-2 mb-2"></div>
+      <div id="result-div">
+        <p id="result" class="mb-2 ms-2 me-2">Loading</p>
+      </div>
+      <div class="divider mt-2 mb-2"></div>
+      {% block players_info %}
+      <div id="players-info" class="w-100">
+        <div id="creator" class="w-100"></div>
+        <div id="opponent" class="w-100 mb-2"></div>
+      </div>
+      {% endblock %}
+      <button id="reset" class="w-100">Reset</button>
+      {% block qr_code_div %}
+      {% endblock %}
+    </div>
+  </div>
+  {% block game_component %}
+  <div id="game-component" data-gc="{{gc}}" class="col-sm-10 mx-0 px-0 mb-5">
+    {% block render %}{% endblock %}
+  </div>
+  {% endblock %}
+</div>
+{% else %}
+<form class="w-100" method="GET" action="">
+  {% crispy form %}
+  <div class="row mt-2">
+    <div class="col-md-12">
+      <button type="submit">Join game</button>
+    </div>
+  </div>
+</form>
+{% if rules_template %}
+{% include rules_template %}
+{% endif %}
+{% endif %}
+{% endblock %}

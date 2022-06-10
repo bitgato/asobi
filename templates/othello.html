@@ -1,0 +1,7 @@
+{% extends "game.html" %}
+{% load render_bundle from webpack_loader %}
+{% block head_title %}Asobi ({{request.user.username}}) - Othello{% endblock %}
+{% block page_heading %}Othello{% endblock %}
+{% block render %}
+{% render_bundle 'othello' %}
+{% endblock %}

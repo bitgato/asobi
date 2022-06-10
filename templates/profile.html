@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head_title %}Asobi {% if request.user %}({{request.user.username}}){% endif %} - Profile{% endblock %}
+{% block page_heading %}
+{% if request.user == profile_user %}My{% else %}{{ profile_user.username }}'s{% endif %}
+Profile
+{% endblock %}
+{% block content %}
+{% for game_model in all_games_data %}
+<div class="my-games mx-0 mb-5">
+  <div class="my-games-heading d-flex flex-row justify-content-center py-2">
+    <img loading="lazy" class="game-table-logo" src="{% static game_model.logo %}"/>
+    <a href="{% url game_model.page_url %}" class="game-table-heading ms-2">
+      <h3>{{ game_model.display_name }}</h3>
+    </a>
+    <div class="game-table-heading ms-auto me-2">
+      {% if request.user == profile_user %}
+      <a href="{% url 'games:my_games_list' game_type=game_model.game_type %}">See more</a>
+      {% else %}
+      <a href="{% url 'games:user_games_list' game_type=game_model.game_type username=profile_user.username %}">See more</a>
+      {% endif %}
+    </div>
+  </div>
+  {% if game_model.game_model_data %}
+  <table class="table table-responsive m-0">
+    <thead class="thead-dark">
+    <tr>
+      <th>#</th>
+      <th>Game code</th>
+      <th>Opponents</th>
+      <th>Result</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for game_data in game_model.game_model_data %}
+    {% with game_data.game as game %}
+    <tr>
+      <th style="width: 8%" scope="row">{{game.id}}</th>
+      <td>
+        <a class="game-code-p ms-2 me-2 mb-0" href="{{ game_data.url }}">
+          <code class="game-table-code">{{ game.game_code }}</code>
+        </a>
+      </td>
+      <td>
+        <div class="d-flex flex-row">
+          {% for player in game_data.players %}
+          <div class="game-table-opponent">{{ player|truncatechars:7 }}</div>
+          {% empty %}
+          <div class="no-opponents">None</div>
+          {% endfor %}
+        </div>
+      </td>
+      <td>
+        {% if game.completed %}
+        {% if not game.winner %}
+        <div class="game-table-tie m-0 p-0">Tie</div>
+        {% elif game.winner == profile_user %}
+        <div class="game-table-win m-0 p-0">Win</div>
+        {% else %}
+        <div class="game-table-lost m-0 p-0">Loss</div>
+        {% endif %}
+        {% else %}
+        <div class="game-table-ongoing m-0 p-0">Ongoing</div>
+        {% endif %}
+      </td>
+    </tr>
+    {% endwith %}
+    {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="no-games pt-2 mb-2 d-flex justify-content-center align-items-baseline w-100">
+    {% if request.user == profile_user %}
+    You have not played any {{ game_model.display_name }} games yet
+    <a class="ms-2 small" href="{% url game_model.page_url %}"><u>Play now</u></a>
+    {% else %}
+    {{ profile_user.username }} has not played any {{ game_model.display_name }} games yet
+    {% endif %}
+  </div>
+  {% endif %}
+</div>
+{% endfor %}
+{% endblock %}

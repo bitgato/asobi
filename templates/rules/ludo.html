@@ -1,0 +1,51 @@
+{% load static %}
+<div class="rules w-100 mx-0 my-3 px-3">
+  <div class="page-heading mx-0 mb-3 w-100"><h1>Rules</h1></div>
+  <p><b><u>Players</u></b> Two to Four</p>
+  <p><b><u>Description</u></b></p>
+  <p>The players race their four pieces from start to finish according to the rolls of a single die.</p>
+  <p>Special areas of the Ludo board are typically coloured bright yellow, green, red, and blue. Each player is
+    assigned a colour and has four pieces in their colour.</p>
+  <p>The board is normally square with a cross-shaped playspace, with each arm of the cross having three columns of
+    squares, usually six per column. The middle columns usually have five squares coloured; these represent a player's
+    home column. A sixth coloured square not on the home column is a player's starting square.</p>
+  <p>At the centre of the board is a large finishing square, composed of coloured triangles atop the players'
+    home columns (thus depicting <u>arrows</u> pointing to the finish).</p>
+  <div class="d-flex justify-content-center">
+  <img loading="lazy" class="rule-img mb-3" src="{% static 'img/rules/ludo/board1.png' %}" />
+  <img loading="lazy" class="rule-img small mb-3" src="{% static 'img/rules/ludo/roll1.png' %}" />
+  </div>
+  <p><b><u>Gameplay</u></b></p>
+  <p>This one might be a little different from what you're used to because of custom house rules.</p>
+  <p>The game creator gets the first turn to roll the dice. Until a player gets a six to <u>free</u> one of his pieces
+    from his yard, the turns rotate. When a player does roll a six, he gets a turn to roll again. Now, <em>this</em>
+    rolled number is the actual value by which he can move his <u>freed</u> piece.</p>
+  <p>If a player has one or more pieces in play and rolls a six, he gets an additional roll and then gets the choice
+    to either move one of his <u>freed</u> pieces by <u>6 + new roll</u> or <u>free</u> a new piece and move it by
+    <u>new roll</u>. If he rolls a six again, he gets another roll and then has the choice to either move one of his
+    <u>freed</u> pieces by <u>12 + new roll</u> or <u>free</u> a new piece and move it by <u>6 + new roll</u>. If he
+    rolls a six a third time, he may not roll the dice again or move a piece and the turn immediately passes to the
+    next player.</p>
+  <p>Once players have one or more pieces in play, they select a piece and it is moved forward along the track by the
+    number of squares indicated by the die. If an opponent's piece is blocking the path, the piece <b>stops</b> at the
+    square and the opponent's piece is returned to its owner's yard.</p>
+  <p>There are some safe squares on the board where no pieces get returned to the yard. These include the piece
+    owner's starting point (A red piece is safe <em>only</em> on the red starting point. It can still
+    get captured and returned to the yard if it's on another player's starting point) and home column. Additionally,
+    there are four squares marked with a &starf; where all pieces, irrespective of the owner, are safe.</p>
+  <p>A player's home column squares are always safe, since no opponent may enter them. In the home column, a player
+    cannot jump over; after one rotation is completed, the player must enter the home and roll the exact number needed
+    to get each piece onto the home triangle. </p>
+  <p>Passes are not allowed. If no move is possible, the turn passes to the next player.</p>
+  <p><b><u>Example</u></b></p>
+  <p>Green player rolls six for the first time.</p>
+  <img loading="lazy" class="rule-img small no-shadow mb-3" src="{% static 'img/rules/ludo/roll2.png' %}" />
+  <p>Green player gets another turn and rolls a four this time.</p>
+  <img loading="lazy" class="rule-img small no-shadow mb-3" src="{% static 'img/rules/ludo/roll3.png' %}" />
+  <p>Green pieces that can be <u>freed</u> or can move are indicated as shown.</p>
+  <img loading="lazy" class="rule-img mb-3" src="{% static 'img/rules/ludo/canmove.gif' %}" />
+  <p>Green player selects the first piece and the piece is moved four squares after freeing.</p>
+  <img loading="lazy" class="rule-img mb-3" src="{% static 'img/rules/ludo/board2.png' %}" />
+  <p>The game continues until one of the players has all the pieces at home. If there are more than two players,
+    the game continues until all players, except <em>one</em>, have all of their pieces at home.</p>
+</div>

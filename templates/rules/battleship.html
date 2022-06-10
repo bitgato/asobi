@@ -1,0 +1,67 @@
+{% load static %}
+<div class="rules w-100 mx-0 my-3 px-3">
+  <div class="page-heading mx-0 mb-3 w-100"><h1>Rules</h1></div>
+  <p><b><u>Players</u></b> Two</p>
+  <p><b><u>Description</u></b></p>
+  <p>Players take turns in trying to guess the locations of the other player's ships on a grid.</p>
+  <p>Each player gets two <u>10 x 10</u> grids, labelled along the sides with letters and numbers. On the left-hand
+    grid the player secretly places his fleet of ships.</p>
+  <p>Each player's fleet consists of the following ships:</p>
+  <div class="d-flex flex-row">
+    <figure class="rule-img-ship">
+      <img loading="lazy" src="{% static 'img/battleship/carrier.png' %}" />
+      <figcaption class="caption">Carrier</figcaption>
+    </figure>
+    <figure class="rule-img-ship ">
+      <img loading="lazy" src="{% static 'img/battleship/battleship.png' %}" />
+      <figcaption class="caption">Battleship</figcaption>
+    </figure>
+    <figure class="rule-img-ship ">
+      <img loading="lazy" src="{% static 'img/battleship/cruiser.png' %}" />
+      <figcaption class="caption">Cruiser</figcaption>
+    </figure>
+    <figure class="rule-img-ship ">
+      <img loading="lazy" src="{% static 'img/battleship/submarine.png' %}" />
+      <figcaption class="caption">Submarine</figcaption>
+    </figure>
+    <figure class="rule-img-ship ">
+      <img loading="lazy" src="{% static 'img/battleship/destroyer.png' %}" />
+      <figcaption class="caption">Destroyer</figcaption>
+    </figure>
+  </div>
+  <table class="table">
+    <thead><tr><th>Ship</th><th>Units</th><th>Size</th></tr></thead>
+    <tbody>
+      <tr><td>Carrier</td><td>x1</td><td>5 squares</td></tr>
+      <tr><td>Battleship</td><td>x1</td><td>4 squares</td></tr>
+      <tr><td>Cruiser</td><td>x1</td><td>3 squares</td></tr>
+      <tr><td>Submarine</td><td>x2</td><td>2 squares</td></tr>
+      <tr><td>Destroyer</td><td>x2</td><td>1 square</td></tr>
+    </tbody>
+  </table>
+  <p><b><u>Gameplay</u></b></p>
+  <p>Each player places all his units on the placement board (<u>right</u> for bigger and <u>down</u> for
+    smaller screens). This is done by dragging a ship from the port and dropping them on the board. The ships'
+    positions can be adjusted freely by dragging and rotating. While the ships may touch each other, they may
+    <b>not</b> overlap.</p>
+  <img loading="lazy" class="rule-gif mb-3" src="{% static 'img/rules/battleship/placement.gif' %}" />
+  <p>When all the 7 units have been placed on the board, the player needs to confirm the placement.</p>
+  <img loading="lazy" class="rule-gif mb-3" src="{% static 'img/rules/battleship/confirm.gif' %}" />
+  <p>The game starts when both the players have confirmed the positions of their fleet. The game creator gets the
+    first turn to guess. To <u>attack</u>, the players need to click a square on the attack board (<u>left</u> for
+    bigger screens and <u>up</u> for smaller screens.</p>
+  <img loading="lazy" class="rule-img ms-0 mb-3" src="{% static 'img/rules/battleship/attack.gif' %}" />
+  <p>Attacks that have landed on a ship are shown with a <span class="dark-red-color"><b>red</b></span> cross, while
+    the attacks that missed are shown with a <span class="dark-blue-color"><b>blue</b></span> cross. Attacks done
+    by the player is shown on the <u>attack</u> board and the attacks done by the opponent is shown on the
+    <u>placement</u> board. Neither player can see the other player's fleet placement.</p>
+  <img loading="lazy" class="rule-img ms-0 mb-3" src="{% static 'img/rules/battleship/attackcrosses.png' %}" />
+  <p>When a player's attack destroys a ship, the ship's silhouette is shown on the attacking player's <u>attack</u>
+    board. The ship's owner doesn't see any change on the <u>attack</u> board, but the ship on his <u>placement</u>
+    board has red crosses over all the squares it occupies, indicating it has been destroyed.</p>
+  <div class="mb-3">
+    <img loading="lazy" class="rule-img ms-0" src="{% static 'img/rules/battleship/shipdestroyed1.png' %}" />
+    <img loading="lazy" class="rule-img ms-0" src="{% static 'img/rules/battleship/shipdestroyed2.png' %}" />
+  </div>
+  <p>The game continues till one of the player's fleet is destroyed completely.</p>
+</div>

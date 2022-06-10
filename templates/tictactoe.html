@@ -1,0 +1,7 @@
+{% extends "game.html" %}
+{% load render_bundle from webpack_loader %}
+{% block head_title %}Asobi ({{request.user.username}}) - Tic-Tac-Toe{% endblock %}
+{% block page_heading %}Tic-Tac-Toe{% endblock %}
+{% block render %}
+{% render_bundle 'tictactoe' %}
+{% endblock %}

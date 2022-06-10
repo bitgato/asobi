@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% load qr_code %}
+{% load render_bundle from webpack_loader %}
+{% load crispy_forms_tags %}
+{% block extra_head %}
+<script id="DragDropTouch" src="https://bernardo-castilho.github.io/DragDropTouch/DragDropTouch.js"></script>
+{% endblock %}
+{% block head_title %}Asobi ({{request.user.username}}) - Battleship{% endblock %}
+{% block page_heading %}Battleship{% endblock %}
+{% block content %}
+{% if gc %}
+<div class="d-flex flex-column col-sm-auto d-flex align-items-center">
+  <div class="qr-code-div">
+    {% qr_from_text request.build_absolute_uri size=10 %}
+    <p class="game-code-p ms-2 me-2 mb-0"><u>gc</u>: <code>{{ gc }}</code></p>
+    <div class="divider mt-2 mb-2"></div>
+    <div id="result-div">
+      <p id="result" class="mb-2 ms-2 me-2">Loading</p>
+    </div>
+    <div class="divider mt-2 mb-2"></div>
+    <div id="players-info" class="w-100">
+      <div id="creator" class="w-100"></div>
+      <div id="opponent" class="w-100"></div>
+    </div>
+    <div class="divider mt-2 mb-2"></div>
+    <button id="reset" class="w-100">Reset</button>
+  </div>
+</div>
+<div id="game-component" data-gc="{{gc}}" class="row gx-4 gy-2 w-100 d-flex justify-content-center mb-5"></div>
+{% render_bundle 'battleship' %}
+{% else %}
+<form class="w-100" method="GET" action="">
+  {% crispy form %}
+  <div class="row mt-2">
+    <div class="col-md-12">
+      <button type="submit">Join game</button>
+    </div>
+  </div>
+</form>
+{% if rules_template %}
+{% include rules_template %}
+{% endif %}
+{% endif %}
+{% endblock %}

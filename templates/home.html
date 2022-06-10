@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_heading_wrapper %}{% endblock %}
+{% block container_size %}container-fluid{% endblock %}
+{% block extra_container_class %}px-0 d-flex flex-column align-items-center{% endblock %}
+{% block content %}
+{% for game in games %}
+{% if game.banner %}
+<div class="banner w-100 mb-0">
+  <img loading="lazy" src="{% static game.banner.image %}" />
+  <div class="banner-content-wrapper">
+    <div class="banner-content {% if forloop.counter|divisibleby:2 %}left{% else %}right{% endif %}">
+      <h1><b>{{ game.name }}</b></h1>
+      <h4>{{ game.banner.description }}</h4>
+      <a href="{% url game.url %}" class="banner-button"><b>Play now</b></a>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endfor %}
+{% endblock %}
