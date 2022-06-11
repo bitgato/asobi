@@ -43,7 +43,6 @@ class ClaimingGameConsumer(GameConsumer):
             squares = square.claim_and_get_squares(self.user)
 
         if content['action'] == 'reset':
-            print("Got reset message")
             game = self.game_model.get_by_code(self.game_code)
             game.reset()
             squares = game.get_all_squares()
