@@ -1,11 +1,15 @@
 import os
-from django.core.asgi import get_asgi_application
-from channels.auth import AuthMiddlewareStack
-from channels.routing import ProtocolTypeRouter, URLRouter
-from django.urls import path
-from . import consumers
+import django
 
+# Initialize the settings before importing consumers etc
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'asobi.settings')
+django.setup()
+
+from django.core.asgi import get_asgi_application  # noqa: E402
+from channels.auth import AuthMiddlewareStack  # noqa: E402
+from channels.routing import ProtocolTypeRouter, URLRouter  # noqa: E402
+from django.urls import path  # noqa: E402
+from . import consumers  # noqa: E402
 
 ws_pattern = [
     path('ws/tictactoe/<game_code>', consumers.TicTacToeConsumer.as_asgi()),

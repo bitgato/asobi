@@ -13,7 +13,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 DEBUG = not (ENVIRONMENT == 'production')
 
-if ENVIRONMENT == 'profduction':
+if ENVIRONMENT == 'production':
     SESSION_COOKIE_SECURE = True
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
