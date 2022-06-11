@@ -1,5 +1,7 @@
 <p align="center">
   <img width="100" src="static/img/logos/asobi.png">
+  <br>
+  <a href="https://bitasobi.herokuapp.com"><img src="https://pyheroku-badge.herokuapp.com/?app=bitasobi&style=flat-square" alt="Heroku" /></a>
 </p>
 <h1 align="center">Asobi</h1>
 <p align="center">
