@@ -6,7 +6,7 @@ import BattleshipWrapper from './BattleshipWrapper.jsx';
 var current_user = null;
 const host = location.host;
 const gc = $('#game-component').data('gc');
-const socketUrl = 'ws://'+host+'/ws/battleship/'+gc;
+const socketUrl = 'wss://'+host+'/ws/battleship/'+gc;
 
 $.get('/current-user/?format=json', (result) => {
     current_user = result

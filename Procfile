@@ -1,2 +1,2 @@
 release: ./release.sh
-web: gunicorn asobi.wsgi --log-file -
+web: daphne -b 0.0.0.0 -p $PORT mysite.asgi:application

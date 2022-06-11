@@ -6,7 +6,7 @@ import $ from 'jquery';
 let current_user = null;
 const host = location.host;
 const gc = $('#game-component').data('gc');
-const socket = 'ws://'+host+'/ws/othello/'+gc;
+const socket = 'wss://'+host+'/ws/othello/'+gc;
 
 $.get('/current-user/?format=json', (result) => {
 	current_user = result
