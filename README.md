@@ -38,6 +38,9 @@ friends and family! Available games include:
 - React JS
 - Webpack with Babel
 
+## Demo deployment
+A demo instance has been deployed to [heroku](https://bitasobi.herokuapp.com/).
+
 ## How to play
 An account is needed to play any game.
 Login to your account and select the game you want to play.
@@ -67,30 +70,16 @@ board. The option is always available even if you visit the game later.
 Rules specific to games have been listed on their respective pages.
 
 ## Database
-Asobi currently uses PostgreSQL but is also compatible with SQLite 3.35+ and
-MariaDB 10.5+. Other databases are not supported due to the use of
+Asobi currently uses PostgreSQL on Heroku but is also compatible with SQLite
+3.35+ and MariaDB 10.5+. Other databases are not supported due to the use of
 [`bulk_create`](https://docs.djangoproject.com/en/4.0/ref/models/querysets/#bulk-create)
 while creating some objects.
 
-For running locally, it is suggested to use SQLite because it makes things
-easier. To do so, edit the file `asobi/settings.py` by uncommenting the
-top `'default'` block and commenting the bottom one:
-```python
-DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    # }
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'OPTIONS': {
-            'service': 'asobi_service',
-            'passfile': '.pgpass',
-        },
-    }
-}
-```
-After editing, the lines should look like this:
+For running locally, it uses SQLite because it makes things easier to setup.
+
+To use postgres while running locally, make the following changes to
+`asobi/settings.py`. Comment the upper `default` key and uncomment the lower
+`default` key. So the following code
 ```python
 DATABASES = {
     'default': {
@@ -106,19 +95,60 @@ DATABASES = {
     # }
 }
 ```
-After this is done, you can run the commands in the
-[Running locally](#running-locally) section to run the application on your
-machine.
+changes to
+```python
+DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'OPTIONS': {
+            'service': 'asobi_service',
+            'passfile': '.pgpass',
+        },
+    }
+}
+```
+You can remove the sqlite `default` key as well if you're sure that you're
+going to be using postgres.
+
+## Secret key
+You need to set a `SECRET_KEY` as an environment variable or in your `.env`
+file.
+```bash
+echo "SECRET_KEY=$(openssl rand 60 | openssl base64 -A)" > .env
+```
+
+## Redis
+Asobi uses Redis channel layer by default. You need to have a running local
+redis instance.
+If you need to use a remote redis server, you can set `$REDIS_HOST`
+to the host url as an environment variable or in your `.env` file.
+```
+REDIS_HOST='redis://:password@hostname:port/0'
+```
+For Heroku deployment, a free version of Redis Cloud Enterprise is currently
+used.
 
 ## Running locally
-Clone the repository and make edits as shown in [Database](#database) section.
+Clone the repository and setup the `.env` file as per the
+[Secret key](#secret-key) section.
+Setup Redis as per [Redis](#redis) section.
 After doing that, run the following commands in the `asobi` root directory:
 ```bash
-npm install
-./node_modules/.bin/webpack --config webpack.config.js
-pip install -r requirements.txt
-echo "SECRET_KEY=$(openssl rand 60 | openssl base64 -A)" > .env
-python manage.py makemigrations
-python manage.py migrate --run-syncdb
-python manage.py runserver
+$ npm install
+$ npm build
+$ pip install -r requirements.txt
+$ python manage.py makemigrations
+$ python manage.py migrate --run-syncdb
+```
+Then run the server with:
+```
+$ python manage.py runserver 0.0.0.0:$PORT
+```
+or
+```
+$ daphne -b 0.0.0.0 -p $PORT asobi.asgi:application
 ```

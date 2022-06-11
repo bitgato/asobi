@@ -8,8 +8,8 @@ Profile
 {% block content %}
 {% for game_model in all_games_data %}
 <div class="my-games mx-0 mb-5">
-  <div class="my-games-heading d-flex flex-row justify-content-center py-2">
-    <img loading="lazy" class="game-table-logo" src="{% static game_model.logo %}"/>
+  <div class="my-games-heading d-flex flex-row justify-content-center">
+    <div><img loading="lazy" class="game-table-logo" src="{% static game_model.logo %}"/></div>
     <a href="{% url game_model.page_url %}" class="game-table-heading ms-2">
       <h3>{{ game_model.display_name }}</h3>
     </a>
