@@ -137,20 +137,27 @@ used.
 ## Running locally
 Clone the repository and setup the `.env` file as per the
 [Secret key](#secret-key) section.
-Setup Redis as per [Redis](#redis) section.
+
+**Note**: Asobi uses `wss://` for websockets by default (for heroku).
+For running locally, use `ws://`. To do so, run the following command in
+the `templates/components` directory.
+```bash
+grep -rl "wss:" . | xargs sed -i "s/wss:/ws:/g"
+```
+
 After doing that, run the following commands in the `asobi` root directory:
 ```bash
-$ npm install
-$ npm build
-$ pip install -r requirements.txt
-$ python manage.py makemigrations
-$ python manage.py migrate --run-syncdb
+npm install
+npm run build
+pip install -r requirements.txt
+python manage.py makemigrations
+python manage.py migrate --run-syncdb
 ```
 Then run the server with:
 ```
-$ python manage.py runserver 0.0.0.0:$PORT
+python manage.py runserver 0.0.0.0:$PORT
 ```
 or
 ```
-$ daphne -b 0.0.0.0 -p $PORT asobi.asgi:application
+daphne -b 0.0.0.0 -p $PORT asobi.asgi:application
 ```
