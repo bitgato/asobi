@@ -138,6 +138,9 @@ used.
 Clone the repository and setup the `.env` file as per the
 [Secret key](#secret-key) section.
 
+Setup a local Redis instance or add a remote host as per [Redis](#redis)
+section.
+
 **Note**: Asobi uses `wss://` for websockets by default (for heroku).
 For running locally, use `ws://`. To do so, run the following command in
 the `templates/components` directory.
