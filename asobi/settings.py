@@ -24,7 +24,7 @@ if ENVIRONMENT == 'production':
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://bitasobi.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://bitasobi.herokuapp.com', 'https://asobi-46md.onrender.com']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
