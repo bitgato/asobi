@@ -7,7 +7,6 @@ class ObstructionSquare extends ClaimingGameSquare {
 
     constructor(props) {
         super(props)
-        this.state = {...this.state}
         this.squareClicked = this.squareClicked.bind(this)
     }
 
@@ -50,7 +49,7 @@ class ObstructionSquare extends ClaimingGameSquare {
         );
         return (
             <button onClick={this.squareClicked}
-                    disabled={this.state.disabled || !this.isAvailable()}
+                    disabled={!this.isAvailable()}
                     className={className}>
                 {this.getSymbol()}
             </button>

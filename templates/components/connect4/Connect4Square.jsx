@@ -8,7 +8,6 @@ class Connect4Square extends ClaimingGameSquare {
 
     constructor(props) {
         super(props)
-        this.state = {...this.state}
         this.squareClicked = this.squareClicked.bind(this)
         this.drop = this.drop.bind(this)
     }
@@ -85,7 +84,7 @@ class Connect4Square extends ClaimingGameSquare {
                 <div className={row0ClassName}>
                     <button className="drop-button mb-2 p-0"
                             data-col={this.props.col}
-                            disabled={this.state.disabled || !this.canDrop()}
+                            disabled={!this.canDrop()}
                             onClick={this.drop}>Drop</button>
                     <div className={containerClassName}>
                         <div className="connect4-slot">
