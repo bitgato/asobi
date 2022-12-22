@@ -7,6 +7,7 @@ class TicTacToeSquare extends ClaimingGameSquare {
 
     constructor(props) {
         super(props)
+        this.state = {...this.state}
         this.squareClicked = this.squareClicked.bind(this)
     }
 
@@ -39,7 +40,7 @@ class TicTacToeSquare extends ClaimingGameSquare {
         );
         return (
             <button onClick={this.squareClicked}
-                    disabled={!this.isAvailable()}
+                    disabled={this.state.disabled || !this.isAvailable()}
                     className={className}>
                 {this.getSymbol()}
             </button>

@@ -5,6 +5,12 @@ import ClaimingGameSquare from '../ClaimingGameSquare.jsx';
 
 class ObstructionSquare extends ClaimingGameSquare {
 
+    constructor(props) {
+        super(props)
+        this.state = {...this.state}
+        this.squareClicked = this.squareClicked.bind(this)
+    }
+
     getSymbol() {
         let symbol = "";
         if(this.props.owner != null && this.props.status != 'Surrounding') {
@@ -44,7 +50,7 @@ class ObstructionSquare extends ClaimingGameSquare {
         );
         return (
             <button onClick={this.squareClicked}
-                    disabled={!this.isAvailable()}
+                    disabled={this.state.disabled || !this.isAvailable()}
                     className={className}>
                 {this.getSymbol()}
             </button>

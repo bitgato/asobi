@@ -7,6 +7,9 @@ class ClaimingGameSquare extends Component {
 
     constructor(props) {
         super(props)
+        this.state = {
+            disabled: false
+        }
         this.squareClicked = this.squareClicked.bind(this)
         this.resize = this.resize.bind(this)
     }
@@ -30,6 +33,7 @@ class ClaimingGameSquare extends Component {
     }
 
     squareClicked(square) {
+        this.setState({disabled: true});
         if(this.isAvailable()) {
             this.takeOwnership()
         }
