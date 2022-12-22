@@ -1,7 +1,7 @@
 <p align="center">
   <img width="100" src="static/img/logos/asobi.png">
   <br>
-  <a href="https://bitasobi.herokuapp.com"><img src="https://pyheroku-badge.herokuapp.com/?app=bitasobi&style=flat-square" alt="Heroku" /></a>
+  <a href="https://asobi-46md.onrender.com"><img width="100" src="static/img/about/render_logo.svg" alt="Render"/></a>
 </p>
 <h1 align="center">Asobi</h1>
 <p align="center">
@@ -41,7 +41,7 @@ friends and family! Available games include:
 - Webpack with Babel
 
 ## Demo deployment
-A demo instance has been deployed to [heroku](https://bitasobi.herokuapp.com/).
+A demo instance has been deployed to [Render](https://asobi-46md.onrender.com).
 
 ## How to play
 An account is needed to play any game.
@@ -72,8 +72,9 @@ board. The option is always available even if you visit the game later.
 Rules specific to games have been listed on their respective pages.
 
 ## Database
-Asobi currently uses PostgreSQL on Heroku but is also compatible with SQLite
-3.35+ and MariaDB 10.5+. Other databases are not supported due to the use of
+Asobi currently uses PostgreSQL from Supabase for Render deployment but is also
+compatible with SQLite 3.35+ and MariaDB 10.5+. Other databases are not
+supported due to the use of
 [`bulk_create`](https://docs.djangoproject.com/en/4.0/ref/models/querysets/#bulk-create)
 while creating some objects.
 
@@ -131,8 +132,7 @@ to the host url as an environment variable or in your `.env` file.
 ```
 REDIS_HOST='redis://:password@hostname:port/0'
 ```
-For Heroku deployment, a free version of Redis Cloud Enterprise is currently
-used.
+For Render deployment, a Redis instance provided by Render is used.
 
 ## Running locally
 Clone the repository and setup the `.env` file as per the
@@ -141,7 +141,7 @@ Clone the repository and setup the `.env` file as per the
 Setup a local Redis instance or add a remote host as per [Redis](#redis)
 section.
 
-**Note**: Asobi uses `wss://` for websockets by default (for heroku).
+**Note**: Asobi uses `wss://` for websockets by default (for Render).
 For running locally, use `ws://`. To do so, run the following command in
 the `templates/components` directory.
 ```bash
