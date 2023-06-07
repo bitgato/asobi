@@ -78,6 +78,10 @@ supported due to the use of
 [`bulk_create`](https://docs.djangoproject.com/en/4.0/ref/models/querysets/#bulk-create)
 while creating some objects.
 
+>:warning: Databases on supabase are paused after a week of inactivity. If you get a
+>500 Server Error during login, it's because the database might be paused. Ping me here
+>and I'll unpause it.
+
 For running locally, it uses SQLite because it makes things easier to setup.
 
 To use postgres while running locally, make the following changes to
