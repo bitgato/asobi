@@ -43,6 +43,10 @@ friends and family! Available games include:
 ## Demo deployment
 A demo instance has been deployed to [Render](https://asobi-46md.onrender.com).
 
+>:warning: Databases on supabase are paused after a week of inactivity. If you get a
+>500 Server Error during login, it's because the database might be paused. Ping me here
+>and I'll unpause it.
+
 ## How to play
 An account is needed to play any game.
 Login to your account and select the game you want to play.
@@ -77,10 +81,6 @@ compatible with SQLite 3.35+ and MariaDB 10.5+. Other databases are not
 supported due to the use of
 [`bulk_create`](https://docs.djangoproject.com/en/4.0/ref/models/querysets/#bulk-create)
 while creating some objects.
-
->:warning: Databases on supabase are paused after a week of inactivity. If you get a
->500 Server Error during login, it's because the database might be paused. Ping me here
->and I'll unpause it.
 
 For running locally, it uses SQLite because it makes things easier to setup.
 
